@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import Post from "./components/post/Post";
 import "./App.css";
 
 function App() {
+  const [posts, setPosts] = useState([
+    {
+      username: "iambeto",
+      caption: "Wow, I'm Amazing!",
+      imageUrl: "https://images.unsplash.com/photo-1637014387463-a446e89abb68?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    },
+    {
+      username: "whoareu",
+      caption: "Oh, I am a GOD!!!",
+      imageUrl: "https://images.unsplash.com/photo-1637019838019-5f14d84ee308?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    },
+  ]);
   return (
     <div className="app">
       <div className="app__header">
@@ -13,6 +26,15 @@ function App() {
             <button className="text__button">Sign up</button>
           </div>
         </div>
+      </div>
+      <div className="timeline">
+        {posts.map((post) => ( 
+          <Post
+          username={post.username}
+          caption={post.caption}
+          imageUrl={post.imageUrl}
+          />
+        ))}
       </div>
     </div>
   );
